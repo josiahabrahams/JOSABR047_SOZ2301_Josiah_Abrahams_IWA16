@@ -68,7 +68,7 @@ const MONTHS = [
   // Only edit below this comment
   
   const createHtml = (athlete) => {
-    const {firstName, surname, id, races}=athlete
+    const {firstName, surname, id, races}=athlete //fixed deconstruction
   
     const [{date, time}] = races.reverse()
  
@@ -78,26 +78,28 @@ const MONTHS = [
     const fragment = document.createDocumentFragment();
    const title = document.createElement('h2');
     title.textContent=  id
-    console.log(title)
-  
-    const list = document.createElement('dl');
-       
+
+   if(athlete===NM372) { // used if statment to fix to dom h2 ids
+    document.body.children[1].appendChild(title)}else{
+      document.body.children[2].appendChild(title)
+    }
+    
+     const list = document.createElement('dl');   
     const day =new Date(date) .getDate(); //fixed date syntax
-    console.log(time)
     const month = MONTHS[new Date(date).getMonth()];
     const year = new Date(date).getFullYear()
     
     const [first, second, third, fourth] = time;
    const total = first + second + third + fourth;
   
-    const minutes = total 
+    const minutes = total // removed hour since it didn't matter
   
-    console.log(firstName)
     
-   const athleteMinutesStringed= minutes.toString()
+    
+   const athleteMinutesStringed= minutes.toString()//made pad start work
   
     const padded=athleteMinutesStringed.padStart(5, '00:')
-   console.log(padded)
+   
    /**
     * i fixed the formation of the dom presentation and interpolation syntax
     */ 
@@ -116,9 +118,9 @@ const MONTHS = [
    
     return fragment.appendChild(list);
   }
- const john = 'john'
+
  
- console.log(john.padStart(8,"i"))
+ 
   const {NM372, SV782} = data.response.data
  const nawbisa =  document.querySelector('[data-athlete="NM372"]')
   nawbisa.appendChild(createHtml(NM372));
