@@ -78,9 +78,11 @@ const MONTHS = [
     const fragment = document.createDocumentFragment();
    const title = document.createElement('h2');
     title.textContent=  id
-
+    title.style.fontSize='18px'
    if(athlete===NM372) { // used if statment to fix to dom h2 ids
-    document.body.children[1].appendChild(title)}else{
+    document.body.children[1].appendChild(title)
+    
+  }else{
       document.body.children[2].appendChild(title)
     }
     
